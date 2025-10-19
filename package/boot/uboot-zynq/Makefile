@@ -18,7 +18,6 @@ include $(INCLUDE_DIR)/host-build.mk
 
 define U-Boot/Default
   BUILD_TARGET:=zynq
-  BUILD_SUBTARGET:=generic
   UBOOT_IMAGE:=spl/boot.bin u-boot.img
   UBOOT_CONFIG:=zynq_$(1)
   UENV:=default
@@ -26,30 +25,43 @@ define U-Boot/Default
 endef
 
 define U-Boot/zc702
+  BUILD_SUBTARGET:=generic
   NAME:=Xilinx ZC702 Dev Board
   BUILD_DEVICES:=xlnx_zynq-zc702
 endef
 
 define U-Boot/zed
+  BUILD_SUBTARGET:=generic
   NAME:=Avnet Digilent ZedBoard Dev Board
   BUILD_DEVICES:=avnet_zynq-zed
 endef
 
 define U-Boot/zybo
+  BUILD_SUBTARGET:=generic
   NAME:=Digilent Zybo Dev Board
   BUILD_DEVICES:=digilent_zynq-zybo
 endef
 
 define U-Boot/zybo_z7
+  BUILD_SUBTARGET:=generic
   NAME:=Digilent Zybo Z7 board
   BUILD_DEVICES:=digilent_zynq-zybo-z7
+endef
+
+define U-Boot/your_board
+	BUILD_SUBTARGET:=yourboard
+	NAME:=Your Custom Zynq Board
+	BUILD_DEVICES:=your_vendor_zynq-your_board
+	UBOOT_CONFIG:=zynq_zc702
+	UENV:=default
 endef
 
 UBOOT_TARGETS := \
 	zc702 \
 	zed \
 	zybo \
-	zybo_z7
+	zybo_z7 \
+	your_board
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(STAGING_DIR_IMAGE)

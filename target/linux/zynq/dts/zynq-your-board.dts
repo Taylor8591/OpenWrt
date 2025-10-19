@@ -1,0 +1,36 @@
+/dts-v1/;
+
+#include "zynq-7000.dtsi"
+    
+/ {
+    model = "Your Custom Zynq Board";
+    compatible = "your,board", "xlnx,zynq-7000";
+    
+    memory@0 {
+        device_type = "memory";
+        reg = <0x0 0x40000000>;  // 1GB RAM, 根据实际调整
+    };
+
+    chosen {
+        bootargs = "console=ttyPS0,115200 root=/dev/mmcblk0p2 rootwait";
+        stdout-path = "serial0:115200n8";
+    };
+};
+    
+&uart0 {
+    status = "okay";
+};
+    
+&sdhci0 {
+    status = "okay";
+};
+    
+&gem0 {
+    status = "okay";
+    phy-mode = "rgmii-id";
+    phy-handle = <&ethernet_phy>;
+    
+    ethernet_phy: ethernet-phy@0 {
+        reg = <0>;
+    };
+};
