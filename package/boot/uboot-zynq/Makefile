@@ -48,10 +48,10 @@ define U-Boot/zybo_z7
   BUILD_DEVICES:=digilent_zynq-zybo-z7
 endef
 
-define U-Boot/your_board
+define U-Boot/your-board
 	BUILD_SUBTARGET:=yourboard
 	NAME:=Your Custom Zynq Board
-	BUILD_DEVICES:=your_vendor_zynq-your_board
+	BUILD_DEVICES:=your_vendor_zynq-your-board
 	UBOOT_CONFIG:=zynq_zc702
 	UENV:=default
 endef
@@ -61,7 +61,7 @@ UBOOT_TARGETS := \
 	zed \
 	zybo \
 	zybo_z7 \
-	your_board
+	your-board
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(STAGING_DIR_IMAGE)
