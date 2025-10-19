@@ -10,7 +10,7 @@ BOARDNAME:=Xilinx Zynq 7000 SoCs
 FEATURES:=fpu gpio rtc usb usbgadget boot-part rootfs-part squashfs
 CPU_TYPE:=cortex-a9
 CPU_SUBTYPE:=neon
-SUBTARGETS:=generic
+SUBTARGETS:=generic yourboard
 
 # future support SUBTARGETS: for both zynq and zynqmp
 
