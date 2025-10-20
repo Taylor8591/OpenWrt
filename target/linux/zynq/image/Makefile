@@ -13,8 +13,10 @@ define Build/zynq-sdcard
 	mkfs.fat $@.boot -C $(FAT32_BLOCKS)
 	mcopy -i $@.boot $(STAGING_DIR_IMAGE)/$(DEVICE_NAME)-boot.bin ::boot.bin
 	mcopy -i $@.boot $(STAGING_DIR_IMAGE)/$(DEVICE_NAME)-u-boot.img ::u-boot.img
+	mcopy -i $@.boot $(STAGING_DIR_IMAGE)/$(DEVICE_NAME)-boot.scr ::boot.scr
 	mcopy -i $@.boot $(STAGING_DIR_IMAGE)/$(DEVICE_NAME)-uEnv.txt ::uEnv.txt
 	mcopy -i $@.boot $(IMAGE_KERNEL) ::fit.itb
+	mcopy -i $@.boot $(IMAGE_KERNEL) ::openwrt.ub
 	./gen_zynq_sdcard_img.sh $@ \
 		$@.boot \
 		$(IMAGE_ROOTFS) \

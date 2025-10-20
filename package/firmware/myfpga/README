@@ -1,0 +1,23 @@
+MyFPGA package
+
+Place your FPGA bitstream files (for example: mydesign.bit or mydesign.bin) into the
+`package/firmware/myfpga/files/` directory. When you run the OpenWrt build system and
+enable this package (in `make menuconfig` -> Firmware -> myfpga), the files in
+`/lib/firmware/` will include your bitstream.
+
+Steps:
+
+1. Copy bitstream to package files:
+   mkdir -p package/firmware/myfpga/files
+   cp /path/to/mydesign.bit package/firmware/myfpga/files/
+
+2. Configure OpenWrt build:
+   make menuconfig
+   -> Firmware -> myfpga (select)
+
+3. Build image (recommended to build the image or the package):
+   make -j$(nproc) V=s
+
+4. After build, the firmware files will be installed in the target rootfs under /lib/firmware.
+
+You can also add post-install scripts if you need to copy to other locations or run commands at boot.

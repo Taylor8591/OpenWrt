@@ -1,0 +1,5 @@
+config PACKAGE_firmware-myfpga
+	bool "My FPGA bitstream"
+	default n
+	help
+	  Installs the custom FPGA bitstream (design_1_wrapper.bit) to /lib/firmware.
